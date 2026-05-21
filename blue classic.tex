@@ -1,0 +1,225 @@
+\documentclass[aspectratio=43]{beamer}
+
+% Compile with XeLaTeX. ctex keeps the template friendly to Chinese text.
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage{tikz}
+
+% --------------------------------------------------------------------------
+% Screenshot-style purple Beamer template
+% --------------------------------------------------------------------------
+\definecolor{PPTBlue}{RGB}{38,42,191}
+\definecolor{PPTBlueDark}{RGB}{67,60,183}
+\definecolor{PPTBlueMid}{RGB}{139,137,216}
+\definecolor{PPTBlueLight}{RGB}{198,196,234}
+\definecolor{PPTShadedBlue}{RGB}{176,178,226}
+\definecolor{PPTShadedText}{RGB}{150,153,158}
+
+\usefonttheme{professionalfonts}
+\setCJKmainfont{SimSun}
+\setsansfont{Latin Modern Sans}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=PPTBlue}
+\setbeamercolor{title}{fg=PPTBlue}
+\setbeamercolor{subtitle}{fg=PPTBlue}
+\setbeamercolor{frametitle}{fg=PPTBlue,bg=white}
+\setbeamercolor{section in toc}{fg=PPTBlue}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{section in toc shaded}{fg=PPTShadedBlue}
+\setbeamercolor{subsection in toc shaded}{fg=PPTShadedText}
+\setbeamercolor{section number projected}{fg=white,bg=PPTBlueDark}
+\setbeamercolor{subsection number projected}{fg=white,bg=PPTBlueDark}
+\setbeamercolor{item projected}{fg=white,bg=PPTBlueDark}
+\setbeamercolor{item}{fg=PPTBlueDark}
+\setbeamercolor{subitem}{fg=PPTBlueDark}
+\setbeamercolor{navigation symbols}{fg=PPTBlueLight,bg=white}
+\setbeamercolor{navigation symbols dimmed}{fg=PPTBlueLight!65,bg=white}
+
+\setbeamercolor{author in head/foot}{bg=PPTBlueDark,fg=white}
+\setbeamercolor{title in head/foot}{bg=PPTBlueMid,fg=white}
+\setbeamercolor{date in head/foot}{bg=PPTBlueLight,fg=black}
+
+\setbeamerfont{title}{size=\fontsize{15.5}{18}\selectfont,series=\mdseries}
+\setbeamerfont{subtitle}{size=\large,series=\mdseries}
+\setbeamerfont{author}{size=\normalsize,series=\mdseries}
+\setbeamerfont{institute}{size=\small,series=\mdseries}
+\setbeamerfont{date}{size=\large}
+\setbeamerfont{frametitle}{size=\Large,series=\mdseries}
+\setbeamerfont{section in toc}{size=\fontsize{11.5}{13}\selectfont,series=\mdseries}
+\setbeamerfont{subsection in toc}{size=\fontsize{11.5}{13}\selectfont,series=\mdseries}
+\setbeamerfont{author in head/foot}{size=\fontsize{6.7}{7.5}\selectfont,series=\bfseries}
+\setbeamerfont{title in head/foot}{size=\fontsize{6.7}{7.5}\selectfont,series=\bfseries}
+\setbeamerfont{date in head/foot}{size=\fontsize{6.7}{7.5}\selectfont}
+
+\setbeamersize{text margin left=0.20cm,text margin right=0.20cm}
+\setbeamertemplate{frametitle}{%
+  \vskip0.06cm%
+  \hskip0pt\insertframetitle\par%
+  \vskip-0.26em%
+}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamertemplate{bibliography item}[text]
+
+% Keep Beamer's lower-right navigation symbols, as in the reference image.
+\setbeamertemplate{navigation symbols}{%
+  \insertslidenavigationsymbol%
+  \insertframenavigationsymbol%
+  \insertsubsectionnavigationsymbol%
+  \insertsectionnavigationsymbol%
+  \insertdocnavigationsymbol%
+  \insertbackfindforwardnavigationsymbol%
+}
+
+% Three-part footer: author | short title | date and frame number.
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.35ex,dp=0.95ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.35ex,dp=0.95ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.35ex,dp=0.95ex]{date in head/foot}%
+      \usebeamerfont{date in head/foot}%
+      \makebox[\linewidth][c]{\insertshortdate{}}%
+      \hspace*{-\linewidth}%
+      \makebox[\linewidth][r]{\insertframenumber{} / \inserttotalframenumber\hspace{1em}}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+\newcommand{\presentationemail}{}
+\newcommand{\email}[1]{\renewcommand{\presentationemail}{#1}}
+
+\newcommand{\screenshottitlepage}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north,align=center,text=PPTBlue,font=\usebeamerfont{title}]
+      at ([yshift=-2.00cm]current page.north) {\inserttitle};
+    \node[anchor=north,align=center,text=PPTBlue,font=\usebeamerfont{subtitle}]
+      at ([yshift=-2.65cm]current page.north) {\insertsubtitle};
+    \node[anchor=north,align=center,font=\usebeamerfont{author}]
+      at ([yshift=-4.02cm]current page.north) {\insertauthor};
+    \node[anchor=north,align=center,font=\usebeamerfont{institute}]
+      at ([yshift=-4.86cm]current page.north) {\insertinstitute};
+    \node[anchor=north,align=center,font=\usebeamerfont{institute}\itshape]
+      at ([yshift=-5.42cm]current page.north) {\presentationemail};
+    \node[anchor=north,align=center,font=\usebeamerfont{date}]
+      at ([yshift=-6.20cm]current page.north) {\insertdate};
+  \end{tikzpicture}%
+}
+
+\setbeamertemplate{title page}{\screenshottitlepage}
+
+% Reusable outline frames. The second one recreates the faded-current-section
+% outline shown in the screenshot.
+\newcommand{\fulllineoutline}{%
+  \begin{frame}{Outline}
+    \tableofcontents
+  \end{frame}
+}
+
+\newcommand{\sectionoutline}{%
+  \begin{frame}{Outline}
+    \tableofcontents[
+      currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/show/shaded
+    ]
+  \end{frame}
+}
+
+\AtBeginSection[]{\sectionoutline}
+
+% --------------------------------------------------------------------------
+% Replace only this metadata block for a new presentation.
+% --------------------------------------------------------------------------
+\title[Two-sided markets]{Two-sided markets: a progress report}
+\subtitle{Based on Rochet and Tirole (2006)}
+\author[Minhae Kim\ (Ohio State)]{Minhae Kim}
+\institute{The Ohio State University}
+\email{kim.6488@osu.edu}
+\date[December 1, 2017]{December 1, 2017}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\fulllineoutline
+
+\section{Introduction}
+\subsection{Basic concepts}
+\subsection{Prior literature}
+
+\begin{frame}{Basic concepts}
+  \begin{itemize}
+    \item Replace this frame with your first main idea.
+    \item The template keeps the same purple bullets, margins, and footer.
+  \end{itemize}
+\end{frame}
+
+\section{Membership and usage externalities}
+\subsection{Overview}
+\subsection{Pure usage externalities}
+\subsection{Membership externalities}
+
+\begin{frame}{Overview}
+  \begin{itemize}
+    \item Add your model setup or intuition here.
+    \item Use short bullets to preserve the reference deck's spacing.
+  \end{itemize}
+\end{frame}
+
+\section{Integrating usage and membership externalities in a simple model}
+\subsection{Model setup}
+\subsection{Solving the model}
+\subsection{Optimal pricing}
+\subsection{Special cases}
+\subsection{Implications}
+
+\begin{frame}{Model setup}
+  \begin{itemize}
+    \item Put equations and definitions here.
+    \item Example:
+      \[
+        p_A^1 < p_B^1,\qquad p_A^2 > p_B^2.
+      \]
+  \end{itemize}
+\end{frame}
+
+\section{Summary}
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item Summarize the main mechanism.
+    \item State the key comparative static.
+  \end{itemize}
+\end{frame}
+
+\section{Appendix}
+\begin{frame}{Appendix}
+  \begin{itemize}
+    \item Backup calculations or omitted proofs go here.
+  \end{itemize}
+\end{frame}
+
+\section{Appe阿斯顿发斯蒂芬}
+\begin{frame}{Appendix发斯蒂芬}
+  \begin{itemize}
+    \item Backup calc阿斯蒂芬阿斯蒂芬.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[plain]
+  \centering
+  \vspace{3.1cm}
+  {\Huge Thank you!}
+\end{frame}
+
+\end{document}
